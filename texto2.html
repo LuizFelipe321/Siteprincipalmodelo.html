@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página de Login</title>
+    <link rel="stylesheet" href="stylejava.css">
+    
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            overflow-y: auto;
+            justify-content: flex-start;
+        }
+
+        .container {
+            width: 300px;
+            padding: 20px;
+            border-radius: 8px;
+            background: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .container h1 {
+            text-align: center;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        form input {
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        form button {
+            padding: 10px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        form button:hover {
+            background-color: #218838;
+        }
+
+        .error-message {
+            color: red;
+            font-size: 12px;
+            text-align: center;
+        }
+
+        header{
+            background-color: #f8f9fa;
+    padding: 20px;
+    text-align: center;
+        }
+
+        main {
+    flex: 1; /* Faz com que o conteúdo principal ocupe o espaço restante */
+    padding: 20px;
+    background-color: #ffffff;
+}
+
+footer {
+    background-color: #343a40;
+    color: #ffffff;
+    text-align: center;
+    padding: 10px;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+    </style>
+</head>
+<body>
+
+
+    <div class="container">
+        <h1>Login</h1>
+        <form id="loginForm">
+            <label for="loginUsername">Usuário:</label>
+            <input type="text" id="loginUsername" name="username" required>
+
+            <label for="loginPassword">Senha:</label>
+            <input type="password" id="loginPassword" name="password" required>
+
+            <button type="submit">Entrar</button>
+        </form>
+        <p id="login-message" class="error-message"></p>
+    </div>
+
+    <div class="container">
+        <h1>Criar Conta</h1>
+        <form id="signupForm">
+            <label for="signupUsername">Nome de Usuário:</label>
+            <input type="text" id="signupUsername" name="username" required>
+
+            <label for="signupPassword">Senha:</label>
+            <input type="password" id="signupPassword" name="password" required>
+
+            <label for="confirmPassword">Confirmar Senha:</label>
+            <input type="password" id="confirmPassword" name="confirmPassword" required>
+
+            <button type="submit">Criar Conta</button>
+        </form>
+        <p id="signup-message" class="error-message"></p>
+    </div>
+
+    <script>
+        // Lógica de login
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const username = document.getElementById('loginUsername').value;
+            const password = document.getElementById('loginPassword').value;
+
+            // Validação básica e redirecionamento
+            if (username && password) {
+                alert('Login realizado com sucesso!');
+                window.location.href = 'index.html';
+            } else {
+                document.getElementById('login-message').textContent = 'Por favor, preencha todos os campos.';
+            }
+        });
+
+        document.getElementById('signupForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const username = document.getElementById('signupUsername').value;
+            const password = document.getElementById('signupPassword').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+
+            if (password !== confirmPassword) {
+                document.getElementById('signup-message').textContent = 'As senhas não coincidem!';
+                return;
+            }
+
+            if (username && password) {
+                alert('Conta criada com sucesso!');
+                window.location.href = 'pagina-de-boas-vindas.html';
+            } else {
+                document.getElementById('signup-message').textContent = 'Por favor, preencha todos os campos.';
+            }
+        });
+
+        </script>
+
+        <div class="container">
+    <a href="index.html">
+        <button type="button">Acesse o site aqui</button>
+    </a>
+</div>
+
+
+<script>
+    document.getElementById('accessButton').addEventListener('click', function() {
+        window.location.href = 'index.html';
+    });
+</script>
+
+<footer>
+    <p>&copy; 2024, Dog's house. Todos os direitos reservados.</p>
+</footer>
+
+</body>
+</html>
